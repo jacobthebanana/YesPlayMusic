@@ -6,6 +6,7 @@
   "author": "hawtim<hawtimzhang@gmail.com>",
   "scripts": {
     "serve": "vue-cli-service serve",
+    "serve:with-api": "vue-cli-service serve; cd ./netease_api && npm run start",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "electron:build": "vue-cli-service electron:build -p never",

@@ -186,7 +186,7 @@ export default class {
   _playAudioSource(source, autoplay = true) {
     Howler.unload();
     this._howler = new Howl({
-      src: [source],
+      src: [`${process.env.VUE_APP_NETEASE_API_URL}/proxy/${source}`],
       html5: true,
       format: ["mp3", "flac"],
     });
