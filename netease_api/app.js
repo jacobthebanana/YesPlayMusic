@@ -109,19 +109,20 @@ fs.readdirSync(path.join(__dirname, 'module'))
     })
   })
 
-const PROXY_SERVICE_URL_PREFIX = '/proxy'
+const PROXY_SERVICE_URL_PREFIX = '/+proxy'
 
 const proxy = createProxyMiddleware({
   target: 'http://localhost:8080',
   changeOrigin: true,
   router: (req) => {
-    requestedTarget = req.url.match('^/proxy/(https://[^/]*)(/.*)')[1]
+    requestedTarget = req.url.match('^/+proxy/(https://[^/]*)(/.*)')[1]
+    console.log(requestedTarget)
     if (requestedTarget.match('.*.music.126.net') == null)
       return 'http://localhost:8080'
     return requestedTarget
   },
   pathRewrite: (_, req) => {
-    requestedTargetPath = req.url.match('^/proxy/(https://[^/]*)(/.*)')[2]
+    requestedTargetPath = req.url.match('^/+proxy/(https://[^/]*)(/.*)')[2]
     return requestedTargetPath
   },
 })
