@@ -117,7 +117,7 @@ const proxy = createProxyMiddleware({
   router: (req) => {
     requestedTarget = req.url.match('^/+proxy/(https://[^/]*)(/.*)')[1]
     console.log(requestedTarget)
-    if (requestedTarget.match('.*.music.126.net') == null)
+    if (requestedTarget.match('.*.music.126.net$') == null)
       return 'http://localhost:8080'
     return requestedTarget
   },
